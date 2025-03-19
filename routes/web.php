@@ -5,7 +5,7 @@ use App\Http\Controllers\FirstController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\InvokableController;
-
+use App\Http\Controllers\DataController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -103,6 +103,46 @@ Route::apiResource("api",ApiController::class);
 // php artisan make:controller Controller_name --invokable
 
 Route::get('invokable',InvokableController::class);
+
+
+
+
+Route::get("create",[DataController::class,"create"]);
+Route::get("getCustomerById/{id}",[DataController::class,"getCustomerById"]);
+Route::get("getCredentialsById/{id}",[DataController::class,"getCredentialsById"]);
+Route::get("create2",[DataController::class,"create2"]);
+Route::get("getAccountById/{id}",[DataController::class,"getAccountById"]);
+Route::get("create3",[DataController::class,"create3"]);
+Route::get("getServiceById/{id}",[DataController::class,"getServiceById"]);
+Route::get("getAllCustomers",[DataController::class,"getAllCustomers"]);
+
+Route::get("getCustomerByIdOrFail/{id}",[DataController::class,"getCustomerByIdOrFail"]);
+Route::get("getCustomerByIdOr/{id}",[DataController::class,"getCustomerByIdOr"]);
+Route::get("getCustomerByAddress/{address}",[DataController::class,"getCustomerByAddress"]);
+Route::get("getOneCustomerByAddress/{address}",[DataController::class,"getOneCustomerByAddress"]);
+Route::get("getAccountsGT100",[DataController::class,"getAccountsGT100"]);
+Route::get("getAccountsGT100or",[DataController::class,"getAccountsGT100or"]);
+Route::get("getAccountsIn",[DataController::class,"getAccountsIn"]);
+Route::get("getAccountsBetween",[DataController::class,"getAccountsBetween"]);
+Route::get("getAliCustomer",[DataController::class,"getAliCustomer"]);
+Route::get("getAllCustomerslimit2",[DataController::class,"getAllCustomerslimit2"]);
+Route::get("getNameCustomers/{id}",[DataController::class,"getNameCustomers"]);
+Route::get("getAliCustomer2/{name}",[DataController::class,"getAliCustomer2"]);
+Route::get("getAccountsByBalance",[DataController::class,"getAccountsByBalance"]);
+
+Route::get("mix",[DataController::class,"mix"]);
+Route::get("statistics",[DataController::class,"statistics"]);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
