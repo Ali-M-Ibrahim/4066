@@ -13,7 +13,10 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(except: [
             'post',
-            'put'
+            'put',
+            "createm3",
+            "createm4",
+            "updatem2/*"
 
         ]);
     })

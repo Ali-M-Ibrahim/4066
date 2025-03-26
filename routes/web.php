@@ -6,6 +6,13 @@ use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\InvokableController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\CrudController;
+use App\Http\Controllers\FrontController;
+
+
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -134,6 +141,25 @@ Route::get("mix",[DataController::class,"mix"]);
 Route::get("statistics",[DataController::class,"statistics"]);
 
 
+
+Route::get("createm1",[CrudController::class,"createm1"]);
+Route::get("createm2",[CrudController::class,"createm2"]);
+Route::post("createm3",[CrudController::class,"createm3"]);
+Route::post("createm4",[CrudController::class,"createm4"]);
+
+Route::get("updatem1",[CrudController::class,"updatem1"]);
+Route::post("updatem2/{id}",[CrudController::class,"updatem2"]);
+Route::get("massUpdate",[CrudController::class,"massUpdate"]);
+
+Route::get("delete/{id}",[CrudController::class,"delete"]);
+Route::get("massDelete",[CrudController::class,"massDelete"]);
+
+Route::get("first-page",[FrontController::class,"index"]);
+Route::get("second-page",[FrontController::class,"index2"]);
+
+Route::get("list-customers",[FrontController::class,"listCustomers"]);
+
+Route::get("view-customer/{id}",[FrontController::class,"viewCustomer"]);
 
 
 

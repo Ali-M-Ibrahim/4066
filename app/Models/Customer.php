@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     //
+    protected $fillable=["name","address"];
+
     public function getCredential(){
         return $this->hasOne(Credential::class);
     }
