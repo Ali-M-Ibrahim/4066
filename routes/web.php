@@ -8,6 +8,8 @@ use App\Http\Controllers\InvokableController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ItemResourceController;
 
 
 
@@ -161,14 +163,43 @@ Route::get("list-customers",[FrontController::class,"listCustomers"]);
 
 Route::get("view-customer/{id}",[FrontController::class,"viewCustomer"]);
 
+Route::get("page1",[FrontController::class,"page1"]);
+Route::get("page2",[FrontController::class,"page2"]);
 
 
+Route::get("listItem",[ItemController::class, 'list'])
+->name("list-item");
+Route::get("createItem",
+    [ItemController::class, 'create'])
+    ->name("create-item");
+
+Route::post("storeItem",[ItemController::class, 'store'])
+    ->name("store-item");
+
+Route::get("showItem/{id}",
+    [ItemController::class, 'show'])
+    ->name("show-item");
 
 
+Route::get("deleteItem/{id}",
+    [ItemController::class, 'delete'])
+    ->name("delete-item");
+
+Route::delete("deleteItem2/{id}",
+    [ItemController::class, 'delete'])
+    ->name("delete-item2");
 
 
+Route::get("editItem/{id}",
+    [ItemController::class, 'edit'])
+    ->name("edit-item");
+
+Route::put("updateItem/{id}",
+    [ItemController::class, 'update'])
+    ->name("update-item");
 
 
+Route::resource("myitem",ItemResourceController::class);
 
 
 

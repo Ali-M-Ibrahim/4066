@@ -59,4 +59,14 @@ class FrontController extends Controller
         $data = Customer::find($id);
         return View("ViewCustomer",compact("data"));
     }
+
+    function page1()
+    {
+        return View("Page1");
+    }
+
+    function page2()
+    {
+        return View("Page2");
+    }
 }
