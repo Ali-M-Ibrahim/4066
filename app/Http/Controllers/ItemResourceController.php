@@ -72,4 +72,8 @@ class ItemResourceController extends Controller
         return redirect()->route("myitem.index");
 
     }
+
+    public function getAll(){
+        
+    }
 }
