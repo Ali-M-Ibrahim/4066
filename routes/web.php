@@ -11,7 +11,9 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemResourceController;
 
+use App\Http\Controllers\ImageController;
 
+use App\Http\Controllers\WebsiteController;
 
 
 
@@ -202,10 +204,13 @@ Route::put("updateItem/{id}",
 Route::resource("myitem",ItemResourceController::class);
 
 
+Route::get("addImage",[ImageController::class,"add"]);
+Route::post("addImage",[ImageController::class,"store"])->name("addImage");
+Route::get("showImage/{id}",[ImageController::class,'display'])->name("displayImage");
 
 
-
-
+Route::get("about",[WebsiteController::class,'about']);
+Route::get("contact",[WebsiteController::class,'contact']);
 
 
 

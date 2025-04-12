@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ItemController extends Controller
 {
     public function list(){
+
+        $hash = Hash::make("123");
+//        $check = Hash::check("1223", $hash);
+        return $hash;
+
         $data= Item::all();
         return View("listItem",compact("data"));
     }
@@ -16,6 +22,21 @@ class ItemController extends Controller
         return View("createItem");
     }
     public function store(Request $request){
+
+        $request->validate([
+            "item_name"=>"required|min:3|max:6|unique:items,name|regex:/[a-z]/|regex:/[A-Z]/",
+            "item_description"=>"required",
+//            "item_price"=>"required|confirmed"
+            "item_price"=>"required|same:item_price_confirmation"
+        ],
+        [
+            'required'=>"Please FILL THIS INPUT: :attribute"
+        ]);
+
+
+
+
+
         $obj = new Item();
         $obj->name= $request->item_name;
         $obj->description= $request->item_description;
