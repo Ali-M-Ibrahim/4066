@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FirstController;
 use App\Http\Controllers\ResourceController;
@@ -214,5 +215,23 @@ Route::get("contact",[WebsiteController::class,'contact']);
 
 
 
+Route::get("register",[AuthController::class,"register"]);
+Route::get("login",[AuthController::class,"login"])->name("login");
+Route::post("login",[AuthController::class,"dologin"])->name("dologin");
+Route::get("ViewUser",[AuthController::class,"ViewUser"])->name("viewuser");
+Route::get("logout",[AuthController::class,"logout"])->name("logout");
+
+Route::get("onlyConnected",function(){
+   return "connected user";
+})->middleware("checkauth");
 
 
+
+Route::middleware(['checkauth'])->group(function () {
+    Route::get('onlyConnected2', function () {
+        return "connected user";
+    });
+    Route::get('/onlyConnected3', function () {
+        return "connected user";
+    });
+});

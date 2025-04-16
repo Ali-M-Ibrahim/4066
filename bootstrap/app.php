@@ -19,6 +19,15 @@ return Application::configure(basePath: dirname(__DIR__))
             "updatem2/*"
 
         ]);
+
+//        $middleware->append(\App\Http\Middleware\CheckAuthentication::class);
+
+        $middleware->alias([
+            'checkauth'=> \App\Http\Middleware\CheckAuthentication::class,
+            'checkadmin'=> \App\Http\Middleware\CheckAdmin::class
+
+        ]);
+
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
