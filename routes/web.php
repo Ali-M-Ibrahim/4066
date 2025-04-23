@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DIController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FirstController;
 use App\Http\Controllers\ResourceController;
@@ -235,3 +236,10 @@ Route::middleware(['checkauth'])->group(function () {
         return "connected user";
     });
 });
+
+
+Route::get("before-di",[DIController::class,"beforedi"]);
+Route::get("with-di",[DIController::class,"withdi"]);
+
+Route::get("with-di1",[DIController::class,"di1"]);
+Route::get("with-di2",[DIController::class,"di2"]);
